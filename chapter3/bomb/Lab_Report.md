@@ -18,6 +18,7 @@ Border relations with Canada have never been better.
 1 2 4 8 16 32
 5 206
 0 0
+ionefg
 ```
 
 
@@ -107,4 +108,22 @@ $2 = 0x4025cf "%d %d"
   ```shell
   maduiersnfotvbylSo you think you can stop the bomb with ctrl-c, do you?
   ```
+- `4010bd` 查看的时候会发现：
+  ```
+  (gdb) p (char *)0x40245e
+  $9 = 0x40245e "flyers"
+  ```
+  最终会将处理后的字符串与该字符串进行对比。这个题之前已经解答过，这里不再进行详细的解答，总结来说，就是将输入的字符串经过处理变成"flyers"，而处理的过程是：
+  ```
+  401096:	83 e2 0f             	and    $0xf,%edx
+  ```
+  这里会将该字符的ASCII码取最后一个4位，然后与字符串`0x4024b0`相加，然后取这个字符进行拷贝。因此，如果是"flyers"，将会与字符串"maduiersnfotvbylSo you think you can stop the bomb with ctrl-c, do you?"进行对比。
+  得到f，则选择末尾为9，可选i;l为o;y为n;e为e;r为f;s为g；
+- 因此输入的字符串可以为`ionefg`
+
+
+*phase_6* :
+- 从反汇编来看，大体的含义是进行输入6个数字;
+- 这里先输入`1 2 3 4 5 6`,并将断点打在`0x40110b`处;
+-
 
