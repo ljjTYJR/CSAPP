@@ -2,15 +2,9 @@
 
 int main()
 {
-    int a = 1;
-    int b = 0;
-    if (a > b)
-    {
-        a = 0;
-    }
-    else
-    {
-        a = 1;
-    }
+    int a;
+    int b;
+    scanf("%d %d", &a, &b);
+    printf("%d, %d\n", a, b);
     return 0;
 }
